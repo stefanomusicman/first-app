@@ -1,0 +1,37 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    margin-top: 2em;
+    width: 500px;
+}
+
+.user-container {
+    padding-left: 0.5em;
+    padding-top: 0.5em;
+}
+
+.age-container {
+    padding-left: 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.form-button {
+    width: 100px;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.7em;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 2px;
+    color: white;
+    background-color: purple;
+}
+
+form input {
+    width: 475px;
+}
