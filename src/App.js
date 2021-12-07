@@ -17,8 +17,6 @@ function App() {
     sessionStorage.setItem('userInfo', JSON.stringify(users))
   }, [users]);
 
-  // sessionStorage.setItem('userInfo', JSON.stringify(users));
-
   const dataTransferHandler = (data) => {
     setUsers(prevUsers => [data, ...prevUsers]);
   };

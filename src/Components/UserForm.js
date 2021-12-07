@@ -36,6 +36,10 @@ const UserForm = (props) => {
             setIsValid(false);
             return;
         }
+        if(typeof user === 'number') {
+            setIsValid(false);
+            return;
+        }
 
         props.formTransfer(formData);
 

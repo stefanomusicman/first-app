@@ -4,7 +4,8 @@
     align-items: center;
     width: 500px;
     background-color: whitesmoke;
-    margin-top: 25px;
-    border: 2px solid black;
+    margin-top: 2em;
+    /* border: 2px solid black; */
     border-radius: 10px;
+    box-shadow: 10px 15px 20px grey;
 }
