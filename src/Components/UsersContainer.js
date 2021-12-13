@@ -18,7 +18,7 @@ const UsersContainer = (props) => {
 
     return (
         <UsersBox>
-            {props.data.map((user) => <UserCard key={user.id} name={user.name} age={user.age} />)}
+            {props.data.map((user) => <UserCard onDelete={props.onDeleteUser} id={user.id} key={user.id} name={user.name} age={user.age} />)}
         </UsersBox>
     )
 }

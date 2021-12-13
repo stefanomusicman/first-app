@@ -21,10 +21,17 @@ function App() {
     setUsers(prevUsers => [data, ...prevUsers]);
   };
 
+  const deleteUser = (userId) => {
+    setUsers((prevUsers) => {
+      const updatedUsers = prevUsers.filter((user) => user.id !== userId);
+      return updatedUsers;
+    })
+  }
+
   return (
     <>
       <UserForm formTransfer={dataTransferHandler}/>
-      {users.length > 0 && <UsersContainer  data={users} />}
+      {users.length > 0 && <UsersContainer onDeleteUser={deleteUser} data={users} />}
     </>
   );
 }

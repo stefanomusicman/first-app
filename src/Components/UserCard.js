@@ -14,8 +14,13 @@ const CardContainer = styled.div`
 `
 
 const UserCard = (props) => {
+
+    const deleteHandler = () => {
+        props.onDelete(props.id)
+    }
+    
     return (
-        <CardContainer>
+        <CardContainer onClick={deleteHandler}>
             <div>{`${props.name} (${props.age} years old)`}</div>
         </CardContainer>   
     )
