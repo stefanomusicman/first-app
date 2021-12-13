@@ -1,6 +1,19 @@
 import React, { useState } from "react";
 import './UserForm.css';
 import ErrorPopup from "./ErrorPopup";
+import styled from 'styled-components';
+
+const FormContainer = styled.form`
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px grey;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    margin-top: 2em;
+    width: 500px;
+    font-family: 'Baloo Bhaijaan 2';
+    padding: 10px 0;
+`
 
 const UserForm = (props) => {
 
@@ -51,7 +64,7 @@ const UserForm = (props) => {
     return (
         <>
             {!isValid && <ErrorPopup return={returnToForm}/>}
-            {isValid && <form onSubmit={submitHandler} className='form-container'>
+            {isValid && <FormContainer onSubmit={submitHandler}>
                 <div className='user-container'>
                     <label htmlFor='username'>Username</label><br />
                     <input onChange={setUserHandler} value={user} type='text' id='username'/>
@@ -61,7 +74,7 @@ const UserForm = (props) => {
                     <input onChange={setAgeHandler} value={age} type='number' id='age'/>
                 </div>
                 <button className='form-button' type='submit'>Add User</button>
-            </form>}
+            </FormContainer>}
         </>
     )
 }

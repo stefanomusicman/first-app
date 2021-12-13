@@ -1,13 +1,23 @@
 import React from "react";
-import './UserCard.css';
+import styled from 'styled-components';
+
+const CardContainer = styled.div`
+    width: 475px;
+    background-color: whitesmoke;
+    font-family: 'Baloo Bhaijaan 2';
+    color: black;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 7px;
+    background: #DDE3FD;
+`
 
 const UserCard = (props) => {
     return (
-        <div className='card-container__main'>
-            <div className='card-container'>
-                <div>{`${props.name} (${props.age} years old)`}</div>
-            </div>
-        </div>    
+        <CardContainer>
+            <div>{`${props.name} (${props.age} years old)`}</div>
+        </CardContainer>   
     )
 }
 
