@@ -11,12 +11,18 @@ const CardContainer = styled.div`
     padding: 10px;
     border-radius: 7px;
     background: #DDE3FD;
+    transition: transform 300ms;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(0.95);
+    }
 `
 
 const UserCard = (props) => {
 
     const deleteHandler = () => {
-        props.onDelete(props.id)
+        props.onDelete(props.id )
     }
     
     return (
