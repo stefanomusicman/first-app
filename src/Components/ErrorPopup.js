@@ -10,7 +10,6 @@ const ErrorPopup = (props) => {
             </header>
             <div className='messages'>
                 <p>Please make sure to fill in Both fields.</p>
-                <p>**Age must be a number greater than 0**</p>
             </div>
             <footer className='footer'>
                 <button onClick={props.return} type='button'>Close</button>
