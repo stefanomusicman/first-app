@@ -45,11 +45,11 @@ const UserForm = (props) => {
             setIsValid(false);
             return;
         }
-        if(+age < 1) {
+        if(typeof user === 'number') {
             setIsValid(false);
             return;
         }
-        if(typeof user === 'number') {
+        if(typeof age === 'number') {
             setIsValid(false);
             return;
         }
@@ -66,14 +66,14 @@ const UserForm = (props) => {
             {!isValid && <ErrorPopup return={returnToForm}/>}
             {isValid && <FormContainer onSubmit={submitHandler}>
                 <div className='user-container'>
-                    <label htmlFor='username'>Username</label><br />
+                    <label htmlFor='username'>Book Title</label><br />
                     <input onChange={setUserHandler} value={user} type='text' id='username'/>
                 </div>
                 <div className='age-container'>
-                    <label htmlFor='age'>Age (Years)</label><br />
-                    <input onChange={setAgeHandler} value={age} type='number' id='age'/>
+                    <label htmlFor='age'>Author</label><br />
+                    <input onChange={setAgeHandler} value={age} type='text' id='age'/>
                 </div>
-                <button className='form-button' type='submit'>Add User</button>
+                <button className='form-button' type='submit'>Add Book</button>
             </FormContainer>}
         </>
     )

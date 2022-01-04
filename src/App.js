@@ -22,10 +22,7 @@ function App() {
   };
 
   const deleteUser = (userId) => {
-    setUsers((prevUsers) => {
-      const updatedUsers = prevUsers.filter((user) => user.id !== userId);
-      return updatedUsers;
-    })
+    setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
   }
 
   return (
