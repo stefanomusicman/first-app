@@ -1,5 +1,5 @@
 import React from "react";
-import UserCard from "./UserCard";
+import BookCard from "./BookCard";
 import styled from "styled-components";
 
 const UsersBox = styled.div`
@@ -14,11 +14,16 @@ const UsersBox = styled.div`
     box-shadow: 0 0 10px black;
 `
 
+const Header = styled.h2`
+    font-family: 'Baloo Bhaijaan 2';
+`
+
 const UsersContainer = (props) => {
 
     return (
         <UsersBox>
-            {props.data.map((user) => <UserCard onDelete={props.onDeleteUser} id={user.id} key={user.id} name={user.name} age={user.age} />)}
+            <Header>Books To Read!</Header>
+            {props.data.map((book) => <BookCard onDelete={props.onDeleteUser} id={book.id} key={book.id} name={book.name} author={book.author} />)}
         </UsersBox>
     )
 }

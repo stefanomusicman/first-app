@@ -60,7 +60,7 @@ const UserCard = (props) => {
     return (
         <CardContainer>
             <Book>
-                <>{`${props.name} - ${props.age}`}</>
+                <>{`${props.name} - ${props.author}`}</>
             </Book>
             <Form>
                 <label htmlFor="current">Completed</label>

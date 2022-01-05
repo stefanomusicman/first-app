@@ -1,38 +1,38 @@
 import React, { useState } from "react";
-import './UserForm.css';
-import ErrorPopup from "./ErrorPopup";
+import './BookForm.css';
+import ErrorPopup from "../ErrorPopup/ErrorPopup";
 
 const UserForm = (props) => {
 
-    const [user, setUser] = useState('');
-    const [age, setAge] = useState('');
+    const [book, setBook] = useState('');
+    const [author, setAuthor] = useState('');
     const [isValid, setIsValid] = useState(true);
 
     const returnToForm = () => {
         setIsValid(true);
     }
 
-    const setUserHandler = (event) => {
-        setUser(event.target.value);
+    const setBookHandler = (event) => {
+        setBook(event.target.value);
     }
 
-    const setAgeHandler = (event) => {
-        setAge(event.target.value);
+    const setAuthorHandler = (event) => {
+        setAuthor(event.target.value);
     }
 
     const submitHandler = (event) => {
         event.preventDefault();
         const formData = {
-            name: user,
-            age: age,
+            name: book,
+            author: author,
             id: Math.random().toString()
         } 
 
-        if(user.trim().length === 0 || age.trim().length === 0) {
+        if(book.trim().length === 0 || author.trim().length === 0) {
             setIsValid(false);
             return;
         }
-        if(typeof user === 'number') {
+        if(typeof book === 'number') {
             setIsValid(false);
             return;
         }
@@ -43,8 +43,8 @@ const UserForm = (props) => {
 
         props.formTransfer(formData);
 
-        setUser('');
-        setAge('');
+        setBook('');
+        setAuthor('');
 
     }
 
@@ -54,11 +54,11 @@ const UserForm = (props) => {
             {isValid && <form onSubmit={submitHandler}>
                 <div className='user-container'>
                     <label htmlFor='username'>Book Title</label><br />
-                    <input onChange={setUserHandler} value={user} type='text' id='username'/>
+                    <input onChange={setBookHandler} value={book} type='text' id='username'/>
                 </div>
                 <div className='age-container'>
                     <label htmlFor='age'>Author</label><br />
-                    <input onChange={setAgeHandler} value={age} type='text' id='age'/>
+                    <input onChange={setAuthorHandler} value={author} type='text' id='age'/>
                 </div>
                 <button className='form-button' type='submit'>Add Book</button>
             </form>}
