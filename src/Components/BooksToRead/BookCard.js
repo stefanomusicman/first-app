@@ -10,7 +10,7 @@ const CardContainer = styled.div`
     background-color: whitesmoke;
     font-family: 'Baloo Bhaijaan 2';
     color: black;
-    margin-top: 15px;
+    margin-top: 10px;
     margin-bottom: 15px;
     padding: 10px;
     border-radius: 7px;
