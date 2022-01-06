@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import './App.css';
 import BookForm from './Components/BookForm/BookForm';
 import BooksToReadContainer from './Components/BooksToRead/BooksToReadContainer';
 import CurrentlyReading from './Components/CurrentlyReading/CurrentlyReading';
+import CompletedBooks from './Components/CompletedBooks/CompletedBooks';
 
 const getSessionOrDefault = (key, defaultValue) => {
   const stored = sessionStorage.getItem(key);
@@ -28,9 +30,16 @@ function App() {
 
   return (
     <>
-      <BookForm formTransfer={dataTransferHandler}/>
-      <BooksToReadContainer onDeleteUser={deleteUser} data={books} />
-      {/* <CurrentlyReading/> */}
+      <div className='container'>
+        <div className='column1'>
+          <BookForm formTransfer={dataTransferHandler}/>
+          <BooksToReadContainer onDeleteUser={deleteUser} data={books} />
+        </div>
+        <div className='column2'>
+          <CurrentlyReading />
+          <CompletedBooks />
+        </div>
+      </div>
     </>
   );
 }

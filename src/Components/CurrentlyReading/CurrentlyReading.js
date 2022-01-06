@@ -12,15 +12,19 @@ const CurrentBooksBox = styled.div`
     margin-top: 2em;
     width: 500px;
     height: 225px;
-    font-family: 'Baloo Bhaijaan 2';
+    // font-family: 'Baloo Bhaijaan 2';
     padding: 10px 0;
+`
+
+const Header = styled.h2`
+    font-family: 'Baloo Bhaijaan 2';
 `
 
 const CurrentlyReading = () => {
     return(
         <CurrentBooksBox>
-            <h2>Currently Reading</h2>
-            <p>Nothing to Read :(</p>
+            <Header>Currently Reading</Header>
+            <h3>Nothing to Read :(</h3>
         </CurrentBooksBox>
     )
 }

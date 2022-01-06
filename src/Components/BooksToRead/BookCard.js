@@ -36,19 +36,13 @@ const ButtonContainer = styled.div`
     }
 `
 
-const Form = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`
-
 const Book = styled.div`
     display: flex;
     flex-direction: column;
     width: 50%;
     justify-content: center;
     align-items: center;
+    font-size: 1em;
 `
 
 const UserCard = (props) => {
@@ -62,10 +56,6 @@ const UserCard = (props) => {
             <Book>
                 <>{`${props.name} - ${props.author}`}</>
             </Book>
-            <Form>
-                <label htmlFor="current">Completed</label>
-                <input id="current" type='checkbox' />
-            </Form>
             <ButtonContainer><BsTrashFill style={{width: '1.5em', height: '1.5em'}} onClick={deleteHandler} /></ButtonContainer>
         </CardContainer>   
     )
