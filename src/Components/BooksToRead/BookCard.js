@@ -56,7 +56,7 @@ const UserCard = (props) => {
             <Book>
                 <>{`${props.name} - ${props.author}`}</>
             </Book>
-            <ButtonContainer><BsTrashFill style={{width: '1.5em', height: '1.5em'}} onClick={deleteHandler} /></ButtonContainer>
+            <ButtonContainer><BsTrashFill style={{width: '1.2em', height: '1.2em'}} onClick={deleteHandler} /></ButtonContainer>
         </CardContainer>   
     )
 }

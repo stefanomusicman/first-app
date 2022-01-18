@@ -8,7 +8,7 @@ const CompletedBooks = () => {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        box-shadow: 0 0 10px black;
+        box-shadow: 0 0 6px black;
         border-radius: 10px;
         background-color: #E8E8E8;
         margin-top: 2em;

@@ -12,7 +12,7 @@ const UsersBox = styled.div`
     margin-top: 2em;
     /* border: 2px solid black; */
     border-radius: 10px;
-    box-shadow: 0 0 10px black;
+    box-shadow: 0 0 6px black;
     overflow: auto;
 
     &::-webkit-scrollbar {
