@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { DNDContext } from './Components/Context/DNDContext';
 import BookForm from './Components/BookForm/BookForm';
 import BooksToReadContainer from './Components/BooksToRead/BooksToReadContainer';
 import CurrentlyReading from './Components/CurrentlyReading/CurrentlyReading';
@@ -29,7 +30,7 @@ function App() {
   }
 
   return (
-    <>
+    <DNDContext>
       <div className='container'>
         <div className='column1'>
           <BookForm formTransfer={dataTransferHandler}/>
@@ -40,7 +41,7 @@ function App() {
           <CompletedBooks />
         </div>
       </div>
-    </>
+    </DNDContext>
   );
 }
 

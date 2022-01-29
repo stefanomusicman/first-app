@@ -22,8 +22,16 @@ const CompletedBooks = () => {
     font-family: 'Baloo Bhaijaan 2';
 `
 
+    const onDragOver = (event) => {
+        event.preventDefault();
+    } 
+
+    const onDrop = (event) => {
+        event.preventDefault();
+    }
+
     return(
-        <CompletedBooksBox>
+        <CompletedBooksBox onDrop={(e) => {onDrop(e)}} onDragOver={(e) => {onDragOver(e)}}>
             <Header>Completed Books</Header>
             <h3>Nothing has been completed :(</h3>
         </CompletedBooksBox>

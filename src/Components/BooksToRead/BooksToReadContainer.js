@@ -34,10 +34,14 @@ const Header = styled.h2`
     font-family: 'Baloo Bhaijaan 2';
 `
 
+const onDragOver = (event) => {
+    event.preventDefault();
+} 
+
 const UsersContainer = (props) => {
 
     return (
-        <UsersBox>
+        <UsersBox onDragOver={(e) => {onDragOver(e)}}>
             <Header>Books To Read!</Header>
             {props.data.map((book) => <BookCard onDelete={props.onDeleteUser} id={book.id} key={book.id} name={book.name} author={book.author} />)}
             {props.data.length === 0 && <h3>Nothing To Read :(</h3>}
