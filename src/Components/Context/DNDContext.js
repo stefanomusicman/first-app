@@ -6,10 +6,10 @@ export const DNDContext = (props) => {
     
 
     // {completed: boolean , cardData}
-    const [cardData, setCardData] = useState({});
+    const [books, setBooks] = useState([]);
 
     return(
-        <DragContext.Provider value={[cardData, setCardData]}>
+        <DragContext.Provider value={[books, setBooks]}>
             {props.children}
         </DragContext.Provider>
     )

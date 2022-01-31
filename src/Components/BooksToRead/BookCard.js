@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from "react";
-import { DragContext } from "../Context/DNDContext";
+import React from "react";
 import styled from 'styled-components';
+import { useDrag } from "react-dnd";
 import { BsTrashFill } from 'react-icons/bs';
 
 const CardContainer = styled.div`
@@ -49,39 +49,31 @@ export const Book = styled.div`
 
 
 
-const UserCard = (props) => {
+const BookCard = (props) => {
 
-    const [cardData, setCardData] = useContext(DragContext)
+    const [{ isDragging }, dragRef] = useDrag({
+        type: 'book',
+        item: { name: props.name, id: props.id, author: props.author },
+        collect: (monitor) => ({
+            isDragging: monitor.isDragging()
+        })
+    })
+
 
     const deleteHandler = () => {
         props.onDelete(props.id )
     }
-    
-    const onDragStart = (event, props) => {
-        console.log('dragstart:', props);
-        console.log(event.dataTransfer);
-        event.dataTransfer.setData('props', JSON.stringify(props));
-        setCardData(props); // Synchronization
-    }
-
-    // use effect
-    useEffect(() => {
-        if(cardData === {}) {
-            
-        }
-    }, [cardData])
-
-    console.log("rerender", cardData);
 
 
     return (
-        <CardContainer draggable='true' onDragStart={(e) => {onDragStart(e, props)}}>
+        <CardContainer ref={dragRef}>    
             <Book>
                 <>{`${props.name} - ${props.author}`}</>
+                {console.log(isDragging, props.name)}
             </Book>
             <ButtonContainer><BsTrashFill style={{width: '1.2em', height: '1.2em'}} onClick={deleteHandler} /></ButtonContainer>
         </CardContainer>
     )
 }
 
-export default UserCard; 
+export default BookCard; 

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { DragContext } from "../Context/DNDContext";
 import './BookForm.css';
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
 
 const UserForm = (props) => {
 
+    const [books, setBooks] = useContext(DragContext);
+ 
     const [book, setBook] = useState('');
     const [author, setAuthor] = useState('');
     const [isValid, setIsValid] = useState(true);
@@ -41,7 +44,7 @@ const UserForm = (props) => {
             return;
         }
 
-        props.formTransfer(formData);
+        setBooks([...books, formData]);
 
         setBook('');
         setAuthor('');

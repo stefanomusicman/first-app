@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DragContext } from "../Context/DNDContext";
+import { useDrop } from "react-dnd";
 import BookCard from "./BookCard";
 import styled from "styled-components";
 
@@ -34,17 +36,29 @@ const Header = styled.h2`
     font-family: 'Baloo Bhaijaan 2';
 `
 
-const onDragOver = (event) => {
-    event.preventDefault();
-} 
 
-const UsersContainer = (props) => {
+const UsersContainer = () => {
+
+    const [books, setBooks] = useContext(DragContext);
+    const [{ isOver }, dropRef] = useDrop({
+        accept: 'book',
+        drop: (item) => setBooks((books) => !books.includes(item.name) ? [...books, item] : books),
+        collect: (monitor) => ({
+            isOver: monitor.isOver()
+        })
+    })
+
+    const deleteBook = (bookId) => {
+        setBooks((prevBooks) => prevBooks.filter((book) => book.id !== bookId));
+    }
 
     return (
-        <UsersBox onDragOver={(e) => {onDragOver(e)}}>
+        <UsersBox ref={dropRef}>
             <Header>Books To Read!</Header>
-            {props.data.map((book) => <BookCard onDelete={props.onDeleteUser} id={book.id} key={book.id} name={book.name} author={book.author} />)}
-            {props.data.length === 0 && <h3>Nothing To Read :(</h3>}
+            {books.map((book) => <BookCard onDelete={deleteBook} id={book.id} key={book.id} name={book.name} author={book.author} />)}
+            {books.length === 0 && <h3>Nothing To Read :(</h3>}
+            {console.log(isOver)}
+            {console.log(books)}
         </UsersBox>
     )
 }
