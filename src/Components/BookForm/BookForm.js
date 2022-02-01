@@ -28,6 +28,7 @@ const UserForm = (props) => {
         const formData = {
             name: book,
             author: author,
+            column: 'Books to read',
             id: Math.random().toString()
         } 
 

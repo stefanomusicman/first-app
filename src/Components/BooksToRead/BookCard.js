@@ -59,14 +59,13 @@ const BookCard = (props) => {
         })
     })
 
-
     const deleteHandler = () => {
         props.onDelete(props.id )
     }
 
 
     return (
-        <CardContainer ref={dragRef}>    
+        <CardContainer ref={dragRef} >    
             <Book>
                 <>{`${props.name} - ${props.author}`}</>
                 {console.log(isDragging, props.name)}
