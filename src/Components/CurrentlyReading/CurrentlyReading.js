@@ -54,7 +54,7 @@ const CurrentlyReading = () => {
             <BooksContainer ref={dropRef}>
                 {currentlyReading.map((book) => <BookCard id={book.id} key={book.id} name={book.name} author={book.author} onDelete={deleteBook}/>)}
                 {currentlyReading.length === 0 && <h3>Nothing to Read :(</h3>}
-                {console.log(isOver)}
+                {/*console.log(isOver)*/}
             </BooksContainer>
 
         </CurrentBooksBox>

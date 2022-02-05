@@ -51,12 +51,35 @@ export const Book = styled.div`
 
 const BookCard = (props) => {
 
+
+/*
+    const changeItemColumn = (currentItem, columnName) => {
+        setItems((prevState) => {
+
+        })
+    }
+
+    end: (item, monitor) => {
+        const dropResult = monitor.getDropResult();
+        if(dropResult && dropResult.name === "Column 1") {
+        
+        }
+    }*/
+
+
     const [{ isDragging }, dragRef] = useDrag({
         type: 'book',
         item: { name: props.name, id: props.id, author: props.author },
         collect: (monitor) => ({
             isDragging: monitor.isDragging()
-        })
+        }),
+        end: (item, monitor) => {
+            const dropResult = monitor.getDropResult();
+            if(dropResult && dropResult.column === "Books to Read") {
+                
+            }
+        }
+ 
     })
 
     const deleteHandler = () => {
@@ -68,7 +91,7 @@ const BookCard = (props) => {
         <CardContainer ref={dragRef} >    
             <Book>
                 <>{`${props.name} - ${props.author}`}</>
-                {console.log(isDragging, props.name)}
+                {/*console.log(isDragging, props.name)*/}
             </Book>
             <ButtonContainer><BsTrashFill style={{width: '1.2em', height: '1.2em'}} onClick={deleteHandler} /></ButtonContainer>
         </CardContainer>

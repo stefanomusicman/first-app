@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { DragContext } from "../Context/DNDContext";
 // import { useDrop } from "react-dnd";
 import BookCard from "./BookCard";
@@ -39,6 +39,7 @@ const Header = styled.h2`
 const BooksToReadContainer = () => {
 
     const [books, setBooks] = useContext(DragContext);
+
     // const [{ isOver }, dropRef] = useDrop({
     //     accept: 'book',
     //     drop: (item) => setBooks((books) => !books.includes(item.name) ? [...books, item] : books),
@@ -47,6 +48,12 @@ const BooksToReadContainer = () => {
     //     })
     // })
 
+   
+
+    const isFirstContainer = (book) => {
+        console.log("Column", book.column, book.column === 'Books to read');
+        return book.column ==='Books to read'};
+
     const deleteBook = (bookId) => {
         setBooks((prevBooks) => prevBooks.filter((book) => book.id !== bookId));
     }
@@ -54,7 +61,8 @@ const BooksToReadContainer = () => {
     return (
         <BooksBox >
             <Header>Books To Read!</Header>
-            {books.map((book) => <BookCard onDelete={deleteBook} id={book.id} key={book.id} name={book.name} author={book.author} />)}
+            
+            {books.map((book) => isFirstContainer(book) && <BookCard onDelete={deleteBook} id={book.id} key={book.id} name={book.name} author={book.author} />)}
             {books.length === 0 && <h3>Nothing To Read :(</h3>}
             {/* {console.log(isOver)} */}
             {console.log(books)}
