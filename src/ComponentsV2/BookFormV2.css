@@ -1,0 +1,45 @@
+form {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 6px black;
+    border-radius: 10px;
+    background-color: #E8E8E8;
+    margin-top: 2em;
+    width: 500px;
+    height: 225px;
+    font-family: 'Baloo Bhaijaan 2';
+    padding: 10px 0;
+}
+
+.user-container {
+    padding-left: 0.5em;
+    padding-top: 0.5em;
+}
+
+.age-container {
+    padding-left: 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.form-button {
+    width: 100px;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.7em;
+    padding: 5px;
+    cursor: pointer;
+    border: 0;
+    border-radius: 2px;
+    color: white;
+    background-color: purple;
+    padding: 8px 0;
+}
+
+form input {
+    width: 482px;
+    padding: 8px 5px;
+    border-radius: 5px;
+    border: 0;
+    font-family: 'Baloo Bhaijaan 2';
+}

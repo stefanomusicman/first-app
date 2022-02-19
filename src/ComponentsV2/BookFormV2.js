@@ -1,12 +1,8 @@
-import React, { useState, useContext } from "react";
-import { DragContext } from "../Context/DNDContext";
-import './BookForm.css';
-import ErrorPopup from "../ErrorPopup/ErrorPopup";
+import React, { useState } from "react";
+import ErrorPopup from '../Components/ErrorPopup/ErrorPopup';
+import './BookFormV2.css';
 
-
-const UserForm = () => {
-
-    const [books, setBooks] = useContext(DragContext);
+const BookFormV2 = (props) => {
  
     const [book, setBook] = useState('');
     const [author, setAuthor] = useState('');
@@ -29,7 +25,7 @@ const UserForm = () => {
         const formData = {
             name: book,
             author: author,
-            column: "Books to read",
+            column: 'Books to Read',
             id: Math.random().toString()
         } 
 
@@ -46,7 +42,7 @@ const UserForm = () => {
             return;
         }
 
-        setBooks([...books, formData]);
+        props.formTransfer(formData)
 
         setBook('');
         setAuthor('');
@@ -71,4 +67,4 @@ const UserForm = () => {
     )
 }
 
-export default UserForm;
+export default BookFormV2;

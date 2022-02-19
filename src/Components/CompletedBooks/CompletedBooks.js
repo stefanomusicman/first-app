@@ -32,21 +32,31 @@ const CompletedBooks = () => {
         drop: (item) => setCompletedBooks((completedBooks) => !completedBooks.includes(item) ? [...completedBooks, item] : completedBooks),
         collect: (monitor) => ({
             isOver: monitor.isOver()
-        })
+        }),
+        end: (item) => {
+            console.log("end from completed books");
+                item.column = 'Completed' 
+        } 
     })
 
     const deleteBook = (bookId) => {
         setCompletedBooks((prevBooks) => prevBooks.filter((book) => book.id !== bookId));
     }
 
+    // const isFirstContainer = (book) => {
+    //     console.log("Column", book.column, book.column === 'Completed');
+    //     return book.column ==='Completed'
+    // };
+
 
     return(
-        <CompletedBooksBox >
+        <CompletedBooksBox >            
             <Header>Completed Books</Header>
             <BooksContainer ref={dropRef}>
                 {completedBooks.length === 0 && <h3>Nothing has been completed :(</h3>}
-                {completedBooks.map((book) => <BookCard id={book.id} key={book.id} name={book.name} author={book.author} onDelete={deleteBook}/>)}
-                {console.log(isOver)}
+                {completedBooks.map((book) => <BookCard id={book.id} key={book.id} name={book.name} author={book.author} onDelete={deleteBook} column={book.column}/>)}
+                {/* console.log(isOver) */}
+                {console.log('completed books', completedBooks)}
             </BooksContainer>
         </CompletedBooksBox>
     )
