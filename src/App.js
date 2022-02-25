@@ -63,8 +63,10 @@
 /* ---- Version 2 ---- */
 
 import React, { useState } from 'react';
+import './App.css';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import BookCardV2 from './ComponentsV2/BookCardV2';
 
 import BookFormV2 from './ComponentsV2/BookFormV2';
 import ContainerV2 from './ComponentsV2/ContainerV2';
@@ -76,14 +78,37 @@ function App() {
   const formHandler = (book) => {
     setBooks([book, ...books])
   }
-  console.log(books);
+  // console.log(books);
+
+  const deleteBook = (bookId) => {
+    setBooks(prevBooks => prevBooks.filter((book) => book.id !== bookId))
+  }
+
+  const returnBooksForColumn = (columnName) => {
+    return books
+      .filter((item) => item.column === columnName)
+      .map((item) => <BookCardV2 name={item.name} key={item.id} id={item.id} author={item.author} setBooks={setBooks} onDelete={deleteBook}/>)
+  }
 
   return(
     <>
-    <BookFormV2 formTransfer={formHandler}/>
     <DndProvider backend={HTML5Backend}>
-      <ContainerV2 title='Books to Read'/>
-      <ContainerV2 title='Currently Reading'/>
+      <div className='container'>
+        <div className='column1'>
+          <BookFormV2 formTransfer={formHandler}/>
+          <ContainerV2 title='Books to Read'>
+            {returnBooksForColumn('Books to Read')}
+          </ContainerV2>
+        </div>
+        <div className='column2'>
+          <ContainerV2 title='Currently Reading'>
+            {returnBooksForColumn('Currently Reading')}
+          </ContainerV2>
+          <ContainerV2 title='Completed Books'>
+            {returnBooksForColumn('Completed Books')}
+          </ContainerV2>
+        </div>
+      </div>
     </DndProvider>
     </>
   )

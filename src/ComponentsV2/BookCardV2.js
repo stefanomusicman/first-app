@@ -47,29 +47,48 @@ export const Book = styled.div`
 `
 
 
-const BookCard = (props) => {
+const BookCardV2 = ({name, id, author, setBooks, onDelete}) => {
+
+    const changeItemColumn = (currentItem, columnName) => {
+        setBooks((prevState) => {
+            return prevState.map(e => {
+                return {
+                    ...e,
+                    column: e.name === currentItem.name ? columnName : e.column,
+                }
+            })
+        })
+    }
 
 
     const [{ isDragging }, dragRef] = useDrag({
         type: 'book',
-        item: { name: props.name, id: props.id, author: props.author, column: props.column },
+        item: { name: name, id: id, author: author },
+        end: (item, monitor) => {
+            const dropResult = monitor.getDropResult();
+            if(dropResult && dropResult.name === 'Books to Read') {
+                changeItemColumn(item, 'Books to Read')
+            } else {
+                changeItemColumn(item, 'Currently Reading')
+            }
+        },
         collect: (monitor) => ({
             isDragging: monitor.isDragging()
         }), 
     })
 
     const deleteHandler = () => {
-        props.onDelete(props.id )
+        onDelete(id)
     }
 
     return (
         <CardContainer ref={dragRef} >    
             <Book>
-                <>{`${props.name} - ${props.author}`}</>
+                <>{`${name} - ${author}`}</>
             </Book>
-            <ButtonContainer><BsTrashFill style={{width: '1.2em', height: '1.2em'}} onClick={deleteHandler} /></ButtonContainer>
+            <ButtonContainer><BsTrashFill style={{width: '1.2em', height: '1.2em'}} onClick={deleteHandler}/></ButtonContainer>
         </CardContainer>
     )
 }
 
-export default BookCard; 
+export default BookCardV2; 
