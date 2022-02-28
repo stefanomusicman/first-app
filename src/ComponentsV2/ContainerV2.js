@@ -7,7 +7,7 @@ const BooksBox = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 6px black;
+    box-shadow: 0 0 10px #505050;
     border-radius: 10px;
     background-color: #E8E8E8;
     margin-top: 2em;
@@ -18,13 +18,15 @@ const BooksBox = styled.div`
 `
 
 const Header = styled.h2`
-font-family: 'Baloo Bhaijaan 2';
+    font-family: 'Baloo Bhaijaan 2';
+    margin: auto;
+    padding-top: 10px;
 `
 
 const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
-    height: 90%;
+    height: 95%;
     overflow: auto;
 `
 
@@ -45,7 +47,7 @@ const ContainerV2 = ({children, title}) => {
         <BooksBox>    
             <Header>{title}</Header>   
             <CardContainer ref={drop}>  
-                {children.length === 0 && <h3>No Books Yet :(</h3>}   
+                {children.length === 0 && <h3>No Books Yet</h3>}   
                 {children}
             </CardContainer>
         </BooksBox>

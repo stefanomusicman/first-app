@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import styled from 'styled-components';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import BookCardV2 from './ComponentsV2/BookCardV2';
@@ -13,6 +13,25 @@ export const COLUMN_NAMES = {
   COMPLETED: 'Completed Books'
 }
 
+const MainContainer = styled.div`
+  display: flex;
+`
+
+const ColumnOne = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
+const ColumnTwo = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2em;
+`
+
 function App() {
 
   const { BOOKS_TO_READ, CURRENTLY_READING, COMPLETED } = COLUMN_NAMES
@@ -21,7 +40,6 @@ function App() {
   const formHandler = (book) => {
     setBooks([book, ...books])
   }
-  // console.log(books);
 
   const deleteBook = (bookId) => {
     setBooks(prevBooks => prevBooks.filter((book) => book.id !== bookId))
@@ -36,22 +54,22 @@ function App() {
   return(
     <>
     <DndProvider backend={HTML5Backend}>
-      <div className='container'>
-        <div className='column1'>
+      <MainContainer>
+        <ColumnOne>
           <BookFormV2 formTransfer={formHandler}/>
           <ContainerV2 title={BOOKS_TO_READ}>
             {returnBooksForColumn(BOOKS_TO_READ)}
           </ContainerV2>
-        </div>
-        <div className='column2'>
+        </ColumnOne>
+        <ColumnTwo className='column2'>
           <ContainerV2 title={CURRENTLY_READING}>
             {returnBooksForColumn(CURRENTLY_READING)}
           </ContainerV2>
           <ContainerV2 title={COMPLETED}>
             {returnBooksForColumn(COMPLETED)}
           </ContainerV2>
-        </div>
-      </div>
+        </ColumnTwo>
+      </MainContainer>
     </DndProvider>
     </>
   )

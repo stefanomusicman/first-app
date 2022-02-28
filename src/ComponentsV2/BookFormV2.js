@@ -1,7 +1,48 @@
 import React, { useState } from "react";
-import ErrorPopup from '../Components/ErrorPopup/ErrorPopup';
+import styled from "styled-components";
+import ErrorPopupV2 from "./ErrorPopupV2";
 import { COLUMN_NAMES } from "../App";
-import './BookFormV2.css';
+
+const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 0 0 10px #505050;
+    border-radius: 10px;
+    background-color: #E8E8E8;
+    margin-top: 2em;
+    width: 500px;
+    height: 275px;
+    font-family: 'Baloo Bhaijaan 2';
+    padding: 10px 0;
+`
+
+const Container = styled.div`
+    padding-left: 0.5em;
+    padding-top: 0.5em;
+`
+
+const Input = styled.input`
+    width: 482px;
+    padding: 8px 5px;
+    border-radius: 5px;
+    border: 0;
+    font-family: 'Baloo Bhaijaan 2';
+`
+
+const Button = styled.button`
+    width: 100px;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.7em;
+    padding: 5px;
+    cursor: pointer;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    background-color: purple;
+    padding: 8px 0;
+`
 
 const BookFormV2 = (props) => {
 
@@ -54,18 +95,18 @@ const BookFormV2 = (props) => {
 
     return (
         <>
-            {!isValid && <ErrorPopup return={returnToForm}/>}
-            {isValid && <form onSubmit={submitHandler}>
-                <div className='user-container'>
+            {!isValid && <ErrorPopupV2 return={returnToForm}/>}
+            {isValid && <Form onSubmit={submitHandler}>
+                <Container>
                     <label htmlFor='username'>Book Title</label><br />
-                    <input onChange={setBookHandler} value={book} type='text' id='username'/>
-                </div>
-                <div className='age-container'>
+                    <Input onChange={setBookHandler} value={book} type='text' id='username'/>
+                </Container>
+                <Container>
                     <label htmlFor='age'>Author</label><br />
-                    <input onChange={setAuthorHandler} value={author} type='text' id='age'/>
-                </div>
-                <button className='form-button' type='submit'>Add Book</button>
-            </form>}
+                    <Input onChange={setAuthorHandler} value={author} type='text' id='age'/>
+                </Container>
+                <Button type='submit'>Add Book</Button>
+            </Form>}
         </>
     )
 }
