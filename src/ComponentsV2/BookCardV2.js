@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import { useDrag } from "react-dnd";
 import { BsTrashFill } from 'react-icons/bs';
+import { COLUMN_NAMES } from "../App";
 
 const CardContainer = styled.div`
     display: flex;
@@ -60,16 +61,32 @@ const BookCardV2 = ({name, id, author, setBooks, onDelete}) => {
         })
     }
 
-
-    const [{ isDragging }, dragRef] = useDrag({
+    const [, dragRef] = useDrag({
         type: 'book',
         item: { name: name, id: id, author: author },
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
-            if(dropResult && dropResult.name === 'Books to Read') {
-                changeItemColumn(item, 'Books to Read')
-            } else {
-                changeItemColumn(item, 'Currently Reading')
+            // if(dropResult && dropResult.name === 'Books to Read') {
+            //     changeItemColumn(item, 'Books to Read')
+            // } else {
+            //     changeItemColumn(item, 'Currently Reading')
+            // }
+            if(dropResult) {
+                const {name} = dropResult;
+                const { BOOKS_TO_READ, CURRENTLY_READING, COMPLETED } = COLUMN_NAMES;
+                switch (name) {
+                    case CURRENTLY_READING:
+                        changeItemColumn(item, CURRENTLY_READING);
+                        break;
+                    case COMPLETED:
+                        changeItemColumn(item, COMPLETED);
+                        break;
+                    case BOOKS_TO_READ:
+                        changeItemColumn(item, BOOKS_TO_READ);
+                        break;
+                    default:
+                        break;
+                }
             }
         },
         collect: (monitor) => ({

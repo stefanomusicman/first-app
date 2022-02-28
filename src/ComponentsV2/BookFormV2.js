@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import ErrorPopup from '../Components/ErrorPopup/ErrorPopup';
+import { COLUMN_NAMES } from "../App";
 import './BookFormV2.css';
 
 const BookFormV2 = (props) => {
+
+    const { BOOKS_TO_READ } = COLUMN_NAMES
  
     const [book, setBook] = useState('');
     const [author, setAuthor] = useState('');
@@ -25,7 +28,7 @@ const BookFormV2 = (props) => {
         const formData = {
             name: book,
             author: author,
-            column: 'Books to Read',
+            column: BOOKS_TO_READ,
             id: Math.random().toString()
         } 
 

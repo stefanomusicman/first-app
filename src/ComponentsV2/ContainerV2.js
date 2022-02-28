@@ -21,12 +21,18 @@ const Header = styled.h2`
 font-family: 'Baloo Bhaijaan 2';
 `
 
+const CardContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    overflow: auto;
+`
 
 const ContainerV2 = ({children, title}) => {
 
     const [{canDrop, isOver}, drop] = useDrop({
         accept:'book',
-        drop: () => ({name: 'some book'}),
+        drop: () => ({name: title}),
         collect: (monitor) => ({
             isOver: monitor.isOver(),
             canDrop: monitor.canDrop()
@@ -36,9 +42,12 @@ const ContainerV2 = ({children, title}) => {
     console.log('options', {canDrop, isOver});
 
     return(
-        <BooksBox ref={drop}>    
-            <Header>{title}</Header>        
-            {children}
+        <BooksBox>    
+            <Header>{title}</Header>   
+            <CardContainer ref={drop}>  
+                {children.length === 0 && <h3>No Books Yet :(</h3>}   
+                {children}
+            </CardContainer>
         </BooksBox>
     )
 }
