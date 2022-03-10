@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
 import BookCardV2 from './ComponentsV2/BookCardV2';
 
 import BookFormV2 from './ComponentsV2/BookFormV2';
@@ -78,6 +79,8 @@ function App() {
   const { BOOKS_TO_READ, CURRENTLY_READING, COMPLETED } = COLUMN_NAMES
   const [books, setBooks] = useState([]);
 
+  const isMobile = window.innerWidth < 700;
+
   const formHandler = (book) => {
     setBooks([book, ...books])
   }
@@ -92,9 +95,11 @@ function App() {
       .map((item) => <BookCardV2 name={item.name} key={item.id} id={item.id} author={item.author} setBooks={setBooks} onDelete={deleteBook}/>)
   }
 
+  const message = 'Keep track of all the books you want to read! Fill out the form and then simply drag and drop the books in the container that best describes your progress!';
+
   return(
     <Primary>
-      <DndProvider backend={HTML5Backend}>
+      <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>
         <Title>Book Tracker</Title>
         <MainContainer>
           <ColumnOne>
@@ -113,7 +118,7 @@ function App() {
           </ColumnTwo>
         </MainContainer>
         <InstrBox>
-          <Instructions>Keep track of all the books you want to read! Fill out the form and then simply drag and drop the books in the container that best describes your progress!</Instructions>
+          <Instructions>{message}</Instructions>
         </InstrBox>
       </DndProvider>
     </Primary>
