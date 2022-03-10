@@ -15,6 +15,10 @@ const BooksBox = styled.div`
     height: 275px;
     font-family: 'Baloo Bhaijaan 2';
     padding: 10px 0;
+
+    @media (max-width: 700px) {
+        width: 300px;
+    }
 `
 
 const Header = styled.h2`

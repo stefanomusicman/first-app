@@ -23,6 +23,10 @@ const CardContainer = styled.div`
         cursor: move;
         transform: scale(0.95);
     }
+
+    @media (max-width: 700px) {
+        width: 280px;
+    }
 `
 
 const ButtonContainer = styled.div`

@@ -34,6 +34,10 @@ const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+
+  @media (max-width: 1100px) {
+    flex-direction: column;
+  }
 `
 
 const ColumnOne = styled.div`
@@ -49,6 +53,10 @@ const ColumnTwo = styled.div`
   justify-content: center;
   align-items: center;
   margin-left: 2em;
+
+  @media (max-width: 1100px) {
+    margin-left: 0;
+  }
 `
 
 const InstrBox = styled.div`

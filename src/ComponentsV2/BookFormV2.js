@@ -15,6 +15,10 @@ const Form = styled.form`
     height: 275px;
     font-family: 'Baloo Bhaijaan 2';
     padding: 10px 0;
+
+    @media (max-width: 700px) {
+        width: 300px;
+    }
 `
 
 const Container = styled.div`
@@ -23,7 +27,7 @@ const Container = styled.div`
 `
 
 const Input = styled.input`
-    width: 482px;
+    width: 98%;  //482px;
     padding: 8px 5px;
     border-radius: 5px;
     border: 0;
