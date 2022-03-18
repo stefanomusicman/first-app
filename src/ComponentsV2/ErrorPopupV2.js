@@ -18,6 +18,11 @@ const ErrorContainer = styled.div`
     width: 50%;
     z-index: 100;
     overflow: hidden;
+
+    @media (max-width: 700px) {
+        width: 80%;
+        left: 10%;
+    }
 `
 
 const Header = styled.header`

@@ -6,7 +6,6 @@
 
 html {
   font-family: sans-serif;
-  /* background-color: #f0fff0; */
 }
 
 body {
@@ -34,7 +33,29 @@ body {
   hsl(326deg 57% 71%) 85%,
   hsl(344deg 74% 73%) 92%,
   hsl(0deg 80% 75%) 100%);
-  /* background-image: url('suave.jpg'); */
   background-size: fill;
-  /* background-repeat: no-repeat; */
+}
+
+@media (max-width: 700px) {
+  body {
+    background-image: linear-gradient(
+      35deg,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%,
+      hsl(195deg 100% 42%) 30%)
+  }
 }
