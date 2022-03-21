@@ -70,11 +70,7 @@ const BookCardV2 = ({name, id, author, setBooks, onDelete}) => {
         item: { name: name, id: id, author: author },
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
-            // if(dropResult && dropResult.name === 'Books to Read') {
-            //     changeItemColumn(item, 'Books to Read')
-            // } else {
-            //     changeItemColumn(item, 'Currently Reading')
-            // }
+
             if(dropResult) {
                 const {name} = dropResult;
                 const { BOOKS_TO_READ, CURRENTLY_READING, COMPLETED } = COLUMN_NAMES;
@@ -105,7 +101,7 @@ const BookCardV2 = ({name, id, author, setBooks, onDelete}) => {
     return (
         <CardContainer ref={dragRef} >    
             <Book>
-                <>{`${name} - ${author}`}</>
+                {`${name} - ${author}`}
             </Book>
             <ButtonContainer><BsTrashFill style={{width: '1.2em', height: '1.2em'}} onClick={deleteHandler}/></ButtonContainer>
         </CardContainer>

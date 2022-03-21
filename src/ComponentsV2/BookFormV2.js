@@ -18,6 +18,7 @@ const Form = styled.form`
 
     @media (max-width: 700px) {
         width: 300px;
+        box-shadow: 0 0 0 0;
     }
 `
 
@@ -27,7 +28,7 @@ const Container = styled.div`
 `
 
 const Input = styled.input`
-    width: 98%;  //482px;
+    width: 98%;
     padding: 8px 5px;
     border-radius: 5px;
     border: 0;
@@ -78,14 +79,6 @@ const BookFormV2 = (props) => {
         } 
 
         if(book.trim().length === 0 || author.trim().length === 0) {
-            setIsValid(false);
-            return;
-        }
-        if(typeof book === 'number') {
-            setIsValid(false);
-            return;
-        }
-        if(typeof age === 'number') {
             setIsValid(false);
             return;
         }

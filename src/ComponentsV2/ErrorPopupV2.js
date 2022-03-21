@@ -66,18 +66,19 @@ const Button = styled.button`
 const ErrorPopupV2 = (props) => {
     return (
         <BackDrop>
-        <ErrorContainer>
-            <Header>
-                <H2>Error</H2>
-            </Header>
-            <Messages>
-                <p>Please make sure to fill in Both fields.</p>
-            </Messages>
-            <Footer>
-                <Button onClick={props.return} type='button'>Close</Button>
-            </Footer>
-        </ErrorContainer>
-        </BackDrop>)
+            <ErrorContainer>
+                <Header>
+                    <H2>Error</H2>
+                </Header>
+                <Messages>
+                    <p>Please make sure to fill in Both fields.</p>
+                </Messages>
+                <Footer>
+                    <Button onClick={props.return} type='button'>Close</Button>
+                </Footer>
+            </ErrorContainer>
+        </BackDrop>
+    )
 }
 
 export default ErrorPopupV2;

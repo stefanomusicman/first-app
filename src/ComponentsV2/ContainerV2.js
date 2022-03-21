@@ -18,6 +18,7 @@ const BooksBox = styled.div`
 
     @media (max-width: 700px) {
         width: 300px;
+        box-shadow: 0 0 0 0;
     }
 `
 
