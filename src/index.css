@@ -14,7 +14,7 @@ body {
   align-items: center;
   margin: 0;
   height: 100vh;
-  background-image: linear-gradient(
+  background: linear-gradient(
   35deg,
   hsl(238deg 72% 60%) 0%,
   hsl(214deg 100% 46%) 5%,
@@ -33,7 +33,8 @@ body {
   hsl(326deg 57% 71%) 85%,
   hsl(344deg 74% 73%) 92%,
   hsl(0deg 80% 75%) 100%);
-  background-size: fill;
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite
 }
 
 @media (max-width: 1100px) {
@@ -58,4 +59,16 @@ body {
       hsl(195deg 100% 42%) 30%,
       hsl(195deg 100% 42%) 30%)
   }
+}
+
+@keyframes gradient {
+  0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
