@@ -49,27 +49,27 @@ const Button = styled.button`
     padding: 8px 0;
 `
 
-const BookFormV2 = (props) => {
+const BookFormV2 = (props: any) => {
 
     const { BOOKS_TO_READ } = COLUMN_NAMES
  
-    const [book, setBook] = useState('');
-    const [author, setAuthor] = useState('');
-    const [isValid, setIsValid] = useState(true);
+    const [book, setBook] = useState<string>('');
+    const [author, setAuthor] = useState<string>('');
+    const [isValid, setIsValid] = useState<boolean>(true);
 
-    const returnToForm = () => {
+    const returnToForm = (): void => {
         setIsValid(true);
     }
 
-    const setBookHandler = (event) => {
+    const setBookHandler = (event: any): void => {
         setBook(event.target.value);
     }
 
-    const setAuthorHandler = (event) => {
+    const setAuthorHandler = (event: any): void => {
         setAuthor(event.target.value);
     }
 
-    const submitHandler = (event) => {
+    const submitHandler = (event: any): void => {
         event.preventDefault();
         const formData = {
             name: book,

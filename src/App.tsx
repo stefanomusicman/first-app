@@ -8,7 +8,7 @@ import BookCardV2 from './ComponentsV2/BookCardV2';
 import BookFormV2 from './ComponentsV2/BookFormV2';
 import ContainerV2 from './ComponentsV2/ContainerV2';
 
-export const COLUMN_NAMES = {
+export const COLUMN_NAMES: any = {
   BOOKS_TO_READ: 'Books to Read',
   CURRENTLY_READING: 'Currently Reading',
   COMPLETED: 'Completed Books'
@@ -76,26 +76,26 @@ const Instructions = styled.p`
 
 function App() {
 
-  const { BOOKS_TO_READ, CURRENTLY_READING, COMPLETED } = COLUMN_NAMES
-  const [books, setBooks] = useState([]);
+  const { BOOKS_TO_READ, CURRENTLY_READING, COMPLETED } = COLUMN_NAMES;
+  const [books, setBooks] = useState<any>([]);
 
   const isMobile = window.innerWidth < 700;
 
-  const formHandler = (book) => {
+  const formHandler = (book: string): void => {
     setBooks([book, ...books])
   }
 
-  const deleteBook = (bookId) => {
-    setBooks(prevBooks => prevBooks.filter((book) => book.id !== bookId))
+  const deleteBook = (bookId: number): void => {
+    setBooks((prevBooks: any) => prevBooks.filter((book: any) => book.id !== bookId))
   }
 
-  const returnBooksForColumn = (columnName) => {
+  const returnBooksForColumn = (columnName: string) => {
     return books
-      .filter((item) => item.column === columnName)
-      .map((item) => <BookCardV2 name={item.name} key={item.id} id={item.id} author={item.author} setBooks={setBooks} onDelete={deleteBook}/>)
+      .filter((item: any) => item.column === columnName)
+      .map((item: any) => <BookCardV2 name={item.name} key={item.id} id={item.id} author={item.author} setBooks={setBooks} onDelete={deleteBook}/>)
   }
 
-  const message = 'Keep track of all the books you want to read! Fill out the form and then simply drag and drop the books in the container that best describes your progress!';
+  const message: string = 'Keep track of all the books you want to read! Fill out the form and then simply drag and drop the books in the container that best describes your progress!';
 
   return(
     <Primary>

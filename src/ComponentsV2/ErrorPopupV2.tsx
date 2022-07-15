@@ -63,7 +63,7 @@ const Button = styled.button`
     background-color: purple;
 `
 
-const ErrorPopupV2 = (props) => {
+const ErrorPopupV2 = (props: any) => {
     return (
         <BackDrop>
             <ErrorContainer>

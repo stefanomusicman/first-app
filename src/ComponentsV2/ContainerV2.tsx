@@ -35,7 +35,7 @@ const CardContainer = styled.div`
     overflow: auto;
 `
 
-const ContainerV2 = ({children, title}) => {
+const ContainerV2: React.FC<{children: any, title: string}> = ({children, title}) => {
 
     const [{canDrop, isOver}, drop] = useDrop({
         accept:'book',

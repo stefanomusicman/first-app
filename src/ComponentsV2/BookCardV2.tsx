@@ -52,11 +52,11 @@ export const Book = styled.div`
 `
 
 
-const BookCardV2 = ({name, id, author, setBooks, onDelete}) => {
+const BookCardV2:React.FC<{name: string, id: number, author: string, setBooks: any, onDelete: any}> = ({name, id, author, setBooks, onDelete}) => {
 
-    const changeItemColumn = (currentItem, columnName) => {
-        setBooks((prevState) => {
-            return prevState.map(e => {
+    const changeItemColumn = (currentItem: any, columnName: string) => {
+        setBooks((prevState: any) => {
+            return prevState.map((e: any) => {
                 return {
                     ...e,
                     column: e.name === currentItem.name ? columnName : e.column,
@@ -69,7 +69,7 @@ const BookCardV2 = ({name, id, author, setBooks, onDelete}) => {
         type: 'book',
         item: { name: name, id: id, author: author },
         end: (item, monitor) => {
-            const dropResult = monitor.getDropResult();
+            const dropResult: any = monitor.getDropResult();
 
             if(dropResult) {
                 const {name} = dropResult;
@@ -94,7 +94,7 @@ const BookCardV2 = ({name, id, author, setBooks, onDelete}) => {
         }), 
     })
 
-    const deleteHandler = () => {
+    const deleteHandler = (): void => {
         onDelete(id)
     }
 
